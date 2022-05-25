@@ -4,11 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import Model.entity.UserBean;
 
 public class UserDAO {
-	public UserBean select(String user_id) throws SQLException,ClassNotFoundException{
+	public UserBean select(String user_id) throws SQLException, ClassNotFoundException{
 		UserBean user = new UserBean();
 		
 		String sql ="SELECT * FROM m_user WHERE user_id = ?";
@@ -25,5 +28,23 @@ public class UserDAO {
 			} 
 		}
 		return user;
+	}
+	public List<UserBean> selectAll() throws  SQLException, ClassNotFoundException{
+		List<UserBean> list = new ArrayList<UserBean>();
+		
+		String sql ="SELECT * FROM m_user";
+		
+		try(Connection con =ConnectionManager.getConnection();
+				Statement pstmt =con.createStatement();) {
+			ResultSet res = pstmt.executeQuery(sql);
+			while(res.next()) {
+				UserBean user = new UserBean();
+				user.setUserId(res.getString("user_id"));
+				user.setUserName(res.getString("username"));
+				user.setUpdateDate(res.getString("updateDate"));
+			} 
+		}
+		
+		return list;
 	}
 }
