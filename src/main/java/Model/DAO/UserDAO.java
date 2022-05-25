@@ -23,8 +23,8 @@ public class UserDAO {
 			while(res.next()) {
 				user.setUserId(res.getString("user_id"));
 				user.setPassword(res.getString("password"));
-				user.setUserName(res.getString("username"));
-				user.setUpdateDate(res.getString("updateDate"));
+				user.setUserName(res.getString("user_name"));
+				user.setUpdateDate(res.getString("update_datetime"));
 			} 
 		}
 		return user;
@@ -40,8 +40,8 @@ public class UserDAO {
 			while(res.next()) {
 				UserBean user = new UserBean();
 				user.setUserId(res.getString("user_id"));
-				user.setUserName(res.getString("username"));
-				user.setUpdateDate(res.getString("updateDate"));
+				user.setUserName(res.getString("user_name"));
+				user.setUpdateDate(res.getString("update_datetime"));
 			} 
 		}
 		
