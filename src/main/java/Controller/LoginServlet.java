@@ -42,14 +42,12 @@ public class LoginServlet extends HttpServlet {
 		
 		try {
 			UserBean user = dao.select(request.getParameter("userId"));
-		
 			String password = request.getParameter("password");
-			
 			
 			if(password.equals(user.getPassword())) {
 				//認証成功
 				request.getSession().setAttribute("USER_ID", user.getUserId());
-				request.getRequestDispatcher("Menu-Servlet").forward(request, response);
+				request.getRequestDispatcher("menu-servlet").forward(request, response);
 			}else {
 				//認証失敗
 				request.getRequestDispatcher("login.html").forward(request, response);
