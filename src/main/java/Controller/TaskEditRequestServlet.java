@@ -1,25 +1,23 @@
 package Controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class MenuServlet
+ * Servlet implementation class TaskEditRequestServlet
  */
-@WebServlet("/menu-servlet")
-public class MenuServlet extends HttpServlet {
+@WebServlet("/task-edit-request-servlet")
+public class TaskEditRequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MenuServlet() {
+    public TaskEditRequestServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,24 +34,8 @@ public class MenuServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		String user_id = (String)session.getAttribute("USER_ID");
-		String url = "";
-		
-		if(user_id != null) {
-			
-			// メニュー画面
-			url = "menu.html";
-			
-		}else {
-			
-			// ログイン画面
-			url = "login.html";
-			
-		}
-		
-		// リクエスト転送
-		request.getRequestDispatcher(url).forward(request, response);
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
