@@ -6,9 +6,12 @@ public class TaskBean implements Serializable {
 	private int taskId;
 	private String taskName;
 	private int categoryId;
+	private String categoryName;
 	private String deadLine;
-	private String userId;
-	private String statusCode;
+	private int userId;
+	private String userName;
+	private int statusId;
+	private String status;
 	private String memo;
 	private String registerDate;
 	private String updateDate;
@@ -30,23 +33,41 @@ public class TaskBean implements Serializable {
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
 	public String getDeadLine() {
 		return deadLine;
 	}
 	public void setDeadLine(String deadLine) {
 		this.deadLine = deadLine;
 	}
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public String getStatusCode() {
-		return statusCode;
+	public String getUserName() {
+		return userName;
 	}
-	public void setStatusCode(String statusCode) {
-		this.statusCode = statusCode;
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public int getStatusId() {
+		return statusId;
+	}
+	public void setStatusId(int statusId) {
+		this.statusId = statusId;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	public String getMemo() {
 		return memo;

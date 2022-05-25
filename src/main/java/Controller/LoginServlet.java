@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 			
 			if(password.equals(user.getPassword())) {
 				//認証成功
-				request.getSession().setAttribute("ID", user.getUserId());
+				request.getSession().setAttribute("USER_ID", user.getUserId());
 				request.getRequestDispatcher("Menu-Servlet").forward(request, response);
 			}else {
 				//認証失敗
