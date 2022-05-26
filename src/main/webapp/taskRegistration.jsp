@@ -28,7 +28,9 @@
 			<tr><th>カテゴリ</th>
 				<td>
 					<select>
-						
+						<%for(CategoryBean category : categoryList){%>
+						<option value="<%=category.getCategoryId()%>"><%=category.getCategoryName()%></option>
+						<%}%>
 					</select>
 				</td>
 			</tr>
@@ -38,16 +40,18 @@
 			<tr><th>担当者</th>
 				<td>
 					<select>
-					<%for(UserBean user : userList){%>
+						<%for(UserBean user : userList){%>
 						<option value="<%=user.getUserId()%>"><%=user.getUserName()%></option>
-					<%}%>
+						<%}%>
 					</select>
 				</td>
 			</tr>
 			<tr><th>ステータス</th>
 				<td>
 					<select>
-						<option>未着手</option>
+						<%for(StatusBean status : statusList){%>
+						<option value="<%=status.getStatusCode()%>"><%=status.getStatusName()%></option>
+						<%}%>
 					</select>
 				</td>
 			</tr>
