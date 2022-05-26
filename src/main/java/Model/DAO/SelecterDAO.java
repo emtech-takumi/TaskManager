@@ -22,6 +22,7 @@ public class SelecterDAO {
 				CategoryBean category = new CategoryBean();
 				category.setCategoryId(res.getInt("category_id"));
 				category.setCategoryName(res.getString("category_name"));
+				list.add(category);
 			}
 		}
 		
@@ -38,6 +39,7 @@ public class SelecterDAO {
 				StatusBean status = new StatusBean();
 				status.setStatusCode(res.getString("status_code"));
 				status.setStatusName(res.getString("status_name"));
+				list.add(status);
 			} 
 		}
 		
