@@ -42,6 +42,7 @@ public class UserDAO {
 				user.setUserId(res.getString("user_id"));
 				user.setUserName(res.getString("user_name"));
 				user.setUpdateDate(res.getString("update_datetime"));
+				list.add(user);
 			} 
 		}
 		
