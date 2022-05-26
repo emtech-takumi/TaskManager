@@ -42,34 +42,50 @@ public class TaskEditRequestServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
+		String user_id = (String)session.getAttribute("USER_ID");
+		String url = "";
 		
-		TaskBean bean = new TaskBean();
-		bean.setTaskId(0);
-		bean.setTaskName(request.getParameter("task_name"));
-		bean.setCategoryId(0);
-		bean.setCategoryName(request.getParameter("category_name"));
-		bean.setDeadLine(request.getParameter("limit_date"));
-		bean.setUserId((Integer.parseInt(request.getParameter("user_id"))));
-		bean.setUserName(request.getParameter("user_name"));
-		bean.setStatusId(Integer.parseInt(request.getParameter("status_code")));
-		bean.setStatus(request.getParameter("status_name"));
-		bean.setMemo(request.getParameter("memo"));
-		bean.setRegisterDate(request.getParameter("create_datetime"));
-		bean.setUpdateDate(request.getParameter("update_datetime"));
+		if(user_id != null) {
+			TaskBean bean = new TaskBean();
+			bean.setTaskId(0);
+			bean.setTaskName(request.getParameter("task_name"));
+			bean.setCategoryId(0);
+			bean.setCategoryName(request.getParameter("category_name"));
+			bean.setDeadLine(request.getParameter("limit_date"));
+			bean.setUserId((Integer.parseInt(request.getParameter("user_id"))));
+			bean.setUserName(request.getParameter("user_name"));
+			bean.setStatusId(Integer.parseInt(request.getParameter("status_code")));
+			bean.setStatus(request.getParameter("status_name"));
+			bean.setMemo(request.getParameter("memo"));
+			bean.setRegisterDate(request.getParameter("create_datetime"));
+			bean.setUpdateDate(request.getParameter("update_datetime"));
+			
+			TaskDAO dao = new TaskDAO();
+			int result = 0;
+			try {
+				if(!bean.getTaskName().equals("")) {
+					result = dao.update((Integer)session.getAttribute("TASK_ID"), bean);
+				}
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+			if(result >= 1) {
+				url = "task-edit-complete.html";
+			}else{
+				url = "editerror.html";
+			}
+			
+		}else {
+			
+			// ログイン画面
+			url = "login.html";
+			
+		}
 		
-		TaskDAO dao = new TaskDAO();
-		int result = 0;
-		try {
-			result = dao.update((Integer)session.getAttribute("TASK_ID"),bean);
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		}
-		if(result >= 1) {
-			request.getRequestDispatcher("task-edit-complete.html").forward(request,response);
-		}else{
-			request.getRequestDispatcher("editerror.html").forward(request,response);
-		}
+		// リクエスト転送
+		request.getRequestDispatcher(url).forward(request, response);
+		
 	}
 
 }
