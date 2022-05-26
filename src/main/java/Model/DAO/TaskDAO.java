@@ -1,6 +1,7 @@
 package Model.DAO;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -42,15 +43,51 @@ public class TaskDAO {
 		}
 		return list;
 	}
-	public int delete(int taskId) {
-		return 0;
-		
+	public int delete(int taskId) throws ClassNotFoundException, SQLException{
+		try(Connection con =ConnectionManager.getConnection();
+				PreparedStatement stmt =con.prepareStatement(""
+						+ "DELETE FROM t_task"
+						+ "WHERE id = ?");
+		){
+			stmt.setInt(1, taskId);
+			return stmt.executeUpdate();
+		}
 	}
-	public int insert(TaskBean task) {
-		return 0;
+	public int insert(TaskBean task) throws ClassNotFoundException, SQLException{
+		try(Connection con =ConnectionManager.getConnection();
+				PreparedStatement stmt =con.prepareStatement(""
+						+ "INSERT INTO t_task"
+						+ "VALUES ()");
+		){
+//			stmt.setInt(1, taskId);
+//			stmt.setInt(1, taskId);
+//			stmt.setInt(1, taskId);
+//			stmt.setInt(1, taskId);
+//			stmt.setInt(1, taskId);
+//			stmt.setInt(1, taskId);
+//			stmt.setInt(1, taskId);
+//			stmt.setInt(1, taskId);
+			
+			return stmt.executeUpdate();
+		}
 	}
-	public int update(TaskBean task) {
-		return 0;
+	public int update(int taskId, TaskBean task) throws ClassNotFoundException, SQLException{
+		try(Connection con =ConnectionManager.getConnection();
+				PreparedStatement stmt =con.prepareStatement(""
+						+ "UPDATE INTO t_task"
+						+ "VALUES ()");
+		){
+//			stmt.setInt(1, taskId);
+//			stmt.setInt(1, taskId);
+//			stmt.setInt(1, taskId);
+//			stmt.setInt(1, taskId);
+//			stmt.setInt(1, taskId);
+//			stmt.setInt(1, taskId);
+//			stmt.setInt(1, taskId);
+//			stmt.setInt(1, taskId);
+			
+			return stmt.executeUpdate();
+		}
 	}
 
 }

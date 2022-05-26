@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,15 +9,15 @@
 </head>
 <body>
 	<h2>メニュー</h2>
-	<form action="formRegisterServlet" method="post">
+	<form action="register-servlet" method="post">
 	<input type="submit" value="タスク登録" name="register">
 	<br>
 	</form>
-	<form action="formTaskListServlet" method="post">
+	<form action="task-list-servlet" method="post">
 	<input type="submit" value="タスク一覧" name="showlist">
 	<br>
 	</form>
-	<form action="formLogoutServlet" method="post">
+	<form action="logout-servlet" method="post">
 	<input type="submit" value="ログアウト" name="post">
 	</form>
 	

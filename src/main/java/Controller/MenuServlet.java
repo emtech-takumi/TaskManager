@@ -43,7 +43,7 @@ public class MenuServlet extends HttpServlet {
 		if(user_id != null) {
 			
 			// メニュー画面
-			url = "menu.html";
+			url = "menu.jsp";
 			
 		}else {
 			
