@@ -9,7 +9,7 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
 	<h2>メニュー</h2>
-	<form action="register-servlet" method="post">
+	<form action="task-registration-servlet" method="post">
 	<input type="submit" value="タスク登録" name="register">
 	<br>
 	</form>

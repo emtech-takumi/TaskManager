@@ -52,7 +52,6 @@ public class TaskListServlet extends HttpServlet {
 			TaskDAO dao = new TaskDAO();
 			try {
 				List<TaskBean> taskList = dao.selectAll();
-				
 				session.setAttribute("TASK_LIST", taskList);
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO 自動生成された catch ブロック

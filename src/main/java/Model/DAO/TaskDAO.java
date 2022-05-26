@@ -16,14 +16,25 @@ public class TaskDAO {
 		try(Connection con =ConnectionManager.getConnection();
 				Statement stmt =con.createStatement();
 				ResultSet res =stmt.executeQuery(""
-						+ "SELECT *"
-						+ " FROM t_task AS T"
-						+ " INNER JOIN m_user U"
-						+ " ON T.user_id = U.user_id"
-						+ " INNER JOIN m_category C"
-						+ " ON T.category_id = C.category_id"
-						+ " INNER JOIN m_status S"
-						+ " ON T.status_code = S.status_code")
+						+ "SELECT T.task_id"
+						+ "    ,T.task_name"
+						+ "    ,C.category_id"
+						+ "    ,C.category_name"
+						+ "    ,T.limit_date"
+						+ "    ,U.user_id"
+						+ "    ,U.user_name"
+						+ "    ,S.status_code"
+						+ "    ,S.status_name"
+						+ "    ,T.memo"
+						+ "    ,T.create_datetime"
+						+ "    ,T.update_datetime"
+						+ "  FROM t_task AS T"
+						+ "  INNER JOIN m_user U"
+						+ "  ON T.user_id = U.user_id"
+						+ "  INNER JOIN m_category C"
+						+ "  ON T.category_id = C.category_id"
+						+ "  INNER JOIN m_status S"
+						+ "  ON T.status_code = S.status_code")
 		){
 			while(res.next()) {
 				TaskBean task = new TaskBean();
@@ -39,6 +50,7 @@ public class TaskDAO {
 				task.setMemo(res.getString("memo"));
 				task.setRegisterDate(res.getString("create_datetime"));
 				task.setUpdateDate(res.getString("update_datetime"));
+				list.add(task);
 			}
 		}
 		return list;
