@@ -67,18 +67,19 @@ public class TaskDAO {
 	}
 	public int insert(TaskBean task) throws ClassNotFoundException, SQLException{
 		try(Connection con =ConnectionManager.getConnection();
-				PreparedStatement stmt =con.prepareStatement(""
+				PreparedStatement stmt = con.prepareStatement(""
 						+ "INSERT INTO t_task"
-						+ "VALUES ()");
+						+ "VALUES (?,?,?,?,?,?,?,?,?)");
 		){
-//			stmt.setInt(1, taskId);
-//			stmt.setInt(1, taskId);
-//			stmt.setInt(1, taskId);
-//			stmt.setInt(1, taskId);
-//			stmt.setInt(1, taskId);
-//			stmt.setInt(1, taskId);
-//			stmt.setInt(1, taskId);
-//			stmt.setInt(1, taskId);
+			stmt.setInt(1, 0);
+			stmt.setString(2, task.getTaskName());
+			stmt.setInt(3, task.getCategoryId());
+			stmt.setString(4, task.getDeadLine());
+			stmt.setInt(5, task.getUserId());
+			stmt.setInt(6, task.getStatusId());
+			stmt.setString(7, task.getMemo());
+			stmt.setString(8, "now()");
+			stmt.setString(9, "now()");
 			
 			return stmt.executeUpdate();
 		}
@@ -86,17 +87,28 @@ public class TaskDAO {
 	public int update(int taskId, TaskBean task) throws ClassNotFoundException, SQLException{
 		try(Connection con =ConnectionManager.getConnection();
 				PreparedStatement stmt =con.prepareStatement(""
-						+ "UPDATE INTO t_task"
-						+ "VALUES ()");
+						+ "UPDATE t_task"
+						+ "SET task_id = ?,"
+						+ " task_name = ?,"
+						+ " category_id = ?,"
+						+ " limit_date = ?,"
+						+ " user_id = ?,"
+						+ " status_code = ?,"
+						+ " memo = ?,"
+						+ " create_datetime = ?,"
+						+ " update_datetime = ?,"
+						+ "WHERE task_id = ?");
 		){
-//			stmt.setInt(1, taskId);
-//			stmt.setInt(1, taskId);
-//			stmt.setInt(1, taskId);
-//			stmt.setInt(1, taskId);
-//			stmt.setInt(1, taskId);
-//			stmt.setInt(1, taskId);
-//			stmt.setInt(1, taskId);
-//			stmt.setInt(1, taskId);
+			stmt.setInt(1, 0);
+			stmt.setString(2, task.getTaskName());
+			stmt.setInt(3, task.getCategoryId());
+			stmt.setString(4, task.getDeadLine());
+			stmt.setInt(5, task.getUserId());
+			stmt.setInt(6, task.getStatusId());
+			stmt.setString(7, task.getMemo());
+			stmt.setString(8, "now()");
+			stmt.setString(9, "now()");
+			stmt.setInt(10, 0);
 			
 			return stmt.executeUpdate();
 		}
