@@ -20,8 +20,8 @@ public class SelecterDAO {
 			ResultSet res = pstmt.executeQuery(sql);
 			while(res.next()) {
 				CategoryBean category = new CategoryBean();
-				category.setCategoryId(res.getInt("user_id"));
-				category.setCategoryName(res.getString("user_name"));
+				category.setCategoryId(res.getInt("category_id"));
+				category.setCategoryName(res.getString("category_name"));
 			}
 		}
 		
@@ -36,8 +36,8 @@ public class SelecterDAO {
 			ResultSet res = pstmt.executeQuery(sql);
 			while(res.next()) {
 				StatusBean status = new StatusBean();
-				status.setStatusCode(res.getString("user_id"));
-				status.setStatusName(res.getString("user_name"));
+				status.setStatusCode(res.getString("status_code"));
+				status.setStatusName(res.getString("status_name"));
 			} 
 		}
 		

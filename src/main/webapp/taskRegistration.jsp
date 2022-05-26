@@ -20,31 +20,42 @@
 	<h2>タスク登録</h2>
 	<form action="task-registration-request" method="post">
 		<table>
-			<tr><th>タスク名</th><td><input type="text"></td></tr>
+			<tr><th>タスク名</th>
+				<td>
+					<input type="text">
+				</td>
+			</tr>
 			<tr><th>カテゴリ</th>
-			<td>
-				<select>
-					
-				</select>
-			</td></tr>
+				<td>
+					<select>
+						
+					</select>
+				</td>
+			</tr>
 			<tr><th>期限</th>
-			<td><input type="date"></td></tr>
+				<td><input type="date"></td>
+			</tr>
 			<tr><th>担当者</th>
-			<td><select>
-			<%
-			for(UserBean user : userList){
-			%>
-				<option value="<%=user.getUserId()%>"><%=user.getUserName()%></option>
-			<%
-			}
-			%>
-			</select></td></tr>
-			<tr><th>ステータス</th><td>
-			<select>
-			<option>未着手</option>
-			</select>
-			</td></tr>
-			<tr><th>メモ</th><td><textarea rows="3" cols="50"></textarea></td></tr>
+				<td>
+					<select>
+					<%for(UserBean user : userList){%>
+						<option value="<%=user.getUserId()%>"><%=user.getUserName()%></option>
+					<%}%>
+					</select>
+				</td>
+			</tr>
+			<tr><th>ステータス</th>
+				<td>
+					<select>
+						<option>未着手</option>
+					</select>
+				</td>
+			</tr>
+			<tr><th>メモ</th>
+				<td>
+					<textarea rows="3" cols="50"></textarea>
+				</td>
+			</tr>
 		</table>
 		<input type="submit" value="登録" style="text-align: right;">
 	</form>
