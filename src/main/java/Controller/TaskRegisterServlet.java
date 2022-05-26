@@ -3,7 +3,6 @@ package Controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,13 +17,13 @@ import Model.DAO.UserDAO;
  * Servlet implementation class RegisterServlet
  */
 @WebServlet("/task-registration-servlet")
-public class RegisterServlet extends HttpServlet {
+public class TaskRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegisterServlet() {
+    public TaskRegisterServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -56,23 +55,20 @@ public class RegisterServlet extends HttpServlet {
 			url = "taskRegistration.jsp";
 			
 			UserDAO userDao = new UserDAO();
-			SelecterDAO dao = new SelecterDAO();
+			SelecterDAO selecterDao = new SelecterDAO();
 			
 			try {
 				request.setAttribute("USER_LIST", userDao.selectAll());
-				request.setAttribute("CATEGORY_LIST", dao.getAllCategory());
-				request.setAttribute("STATUS_LIST", dao.getAllStatus());
+				request.setAttribute("CATEGORY_LIST", selecterDao.getAllCategory());
+				request.setAttribute("STATUS_LIST", selecterDao.getAllStatus());
 				
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO 自動生成された catch ブロック
 				e.printStackTrace();
 			}
-			
-//		}
+		}
 		
-		RequestDispatcher rd = request.getRequestDispatcher(url);
-		rd.forward(request, response);
-	}
+		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 }

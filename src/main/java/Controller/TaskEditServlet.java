@@ -12,13 +12,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class EditServlet
  */
 @WebServlet("/task-edit-servlet")
-public class EditServlet extends HttpServlet {
+public class TaskEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditServlet() {
+    public TaskEditServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

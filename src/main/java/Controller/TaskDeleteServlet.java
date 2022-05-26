@@ -12,13 +12,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class DeleteServlet
  */
 @WebServlet("/task-delete-servlet")
-public class DeleteServlet extends HttpServlet {
+public class TaskDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteServlet() {
+    public TaskDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
