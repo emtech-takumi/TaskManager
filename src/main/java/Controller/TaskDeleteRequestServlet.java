@@ -44,8 +44,12 @@ public class TaskDeleteRequestServlet extends HttpServlet {
 		
 		TaskDAO dao = new TaskDAO();
 		int result = 0;
+		String[] taskIds = (String[])session.getAttribute("TASK_IDs");
 		try {
-			result = dao.delete((Integer)session.getAttribute("TASK"));
+			for(String id : taskIds) {
+				result = dao.delete(Integer.parseInt(id));
+			}
+			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();

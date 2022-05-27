@@ -46,9 +46,8 @@ List<TaskBean> tasks = (List) session.getAttribute("TASK_LIST");
 		</tr>
 	<%} %>
 	</tbody>
-</table>
-<input type="button" value="削除" name="delete">
-	
+	</table>
+	<input type="submit" value="削除" name="delete">
 </form>
 <a href="menu-servlet">メニューに戻る</a>
 </body>

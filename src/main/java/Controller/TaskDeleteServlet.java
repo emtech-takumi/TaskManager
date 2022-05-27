@@ -41,9 +41,7 @@ public class TaskDeleteServlet extends HttpServlet {
 		
 		HttpSession session =request.getSession();
 		
-		String task =request.getParameter("task_id");
 		
-		session.setAttribute("TASK_ID",task);
 		
 		request.getRequestDispatcher("taskDeleteConfirm.jsp").forward(request, response);
 	}

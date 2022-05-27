@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -43,17 +44,21 @@ public class RedirectServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String user_id = (String)session.getAttribute("USER_ID");
 		String url = "";
-		
+		@SuppressWarnings("unchecked")
+		List<TaskBean> tasks = (List<TaskBean>) session.getAttribute("TASK_LIST");
 		
 		if(user_id != null) {
 			if(request.getParameter("delete") != null) {
 				url = "task-delete-servlet";
+				List<TaskBean> list = new ArrayList<TaskBean>();
 				String[] selected = request.getParameterValues("task_id");
-				System.out.println(selected.toString());
 				session.setAttribute("TASK_IDs", selected);
+				for(String id : selected) {
+					list.add(tasks.get(Integer.parseInt(id)));
+				}
+				session.setAttribute("SELECTED_TASKS", list);
 			}
 			else {
-				List<TaskBean> tasks = (List) session.getAttribute("TASK_LIST");
 				url = "task-edit-servlet";
 				for(int i = 0; i < tasks.size(); i++) {
 					if(request.getParameter(String.valueOf(i)) != null) {

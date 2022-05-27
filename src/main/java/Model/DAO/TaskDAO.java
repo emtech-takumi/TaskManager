@@ -59,7 +59,7 @@ public class TaskDAO {
 		try(Connection con =ConnectionManager.getConnection();
 				PreparedStatement stmt =con.prepareStatement(""
 						+ "DELETE FROM t_task"
-						+ " WHERE id = ?");
+						+ " WHERE task_id = ?");
 		){
 			stmt.setInt(1, taskId);
 			return stmt.executeUpdate();
@@ -88,7 +88,8 @@ public class TaskDAO {
 		try(Connection con =ConnectionManager.getConnection();
 				PreparedStatement stmt =con.prepareStatement(""
 						+ "UPDATE t_task"
-						+ "SET task_id = ?,"
+						+ " SET "
+						+ "	task_id = ?,"
 						+ " task_name = ?,"
 						+ " category_id = ?,"
 						+ " limit_date = ?,"
