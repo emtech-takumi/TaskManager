@@ -53,18 +53,26 @@ public class RedirectServlet extends HttpServlet {
 				List<TaskBean> list = new ArrayList<TaskBean>();
 				String[] selected = request.getParameterValues("task_id");
 				session.setAttribute("TASK_IDs", selected);
+				int i = 0;
 				for(String id : selected) {
-					list.add(tasks.get(Integer.parseInt(id)));
+					for(TaskBean task : tasks) {
+						if(String.valueOf(task.getTaskId()).equals(id)) {
+							list.add(tasks.get(i));
+						}
+					}
+					i++;
 				}
 				session.setAttribute("SELECTED_TASKS", list);
 			}
 			else {
 				url = "task-edit-servlet";
-				for(int i = 0; i < tasks.size(); i++) {
-					if(request.getParameter(String.valueOf(i)) != null) {
+				int i = 0;
+				for(TaskBean task : tasks) {
+					if(request.getParameter(String.valueOf(task.getTaskId())) != null) {
 						session.setAttribute("TASK", tasks.get(i));
 						session.setAttribute("TASK_ID", i);
 					}
+					i++;
 				}
 			}
 			

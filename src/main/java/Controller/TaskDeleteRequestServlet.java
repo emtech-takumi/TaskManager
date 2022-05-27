@@ -47,15 +47,14 @@ public class TaskDeleteRequestServlet extends HttpServlet {
 		String[] taskIds = (String[])session.getAttribute("TASK_IDs");
 		try {
 			for(String id : taskIds) {
-				result = dao.delete(Integer.parseInt(id));
+				result += dao.delete(Integer.parseInt(id));
 			}
-			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
-		if(result >= 1) {
-			request.getRequestDispatcher("taskDeleteComplete.html").forward(request,response);
+		if(result == taskIds.length) {
+			request.getRequestDispatcher("task-delete-complete.html").forward(request,response);
 		}else{
 			request.getRequestDispatcher("deleteerror.html").forward(request,response);
 		}

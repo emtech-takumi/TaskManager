@@ -26,12 +26,11 @@ List<TaskBean> tasks = (List) session.getAttribute("TASK_LIST");
 	</thead>
 	<tbody>
 	<%
-	int i = 0;
 	for(TaskBean task : tasks){
 	%>
 		<tr>
 		 	<td>
-		 		<input type="checkbox" name="task_id" value="<%=i%>">
+		 		<input type="checkbox" name="task_id" value="<%=task.getTaskId()%>">
 		 	</td>
 		 	<%="<td>"+task.getTaskName()+"</td>" %>
 		 	<%="<td>"+task.getCategoryName()+"</td>" %>
@@ -40,9 +39,8 @@ List<TaskBean> tasks = (List) session.getAttribute("TASK_LIST");
 		 	<%="<td>"+task.getStatus()+"</td>" %>
 		 	<%="<td>"+task.getMemo()+"</td>" %>
 		 	<td>
-		 		<input type="submit" value="編集" name="<%=i%>">
+		 		<input type="submit" value="編集" name="<%=task.getTaskId()%>">
 		 	</td>
-		 	<%i++;%>
 		</tr>
 	<%} %>
 	</tbody>
