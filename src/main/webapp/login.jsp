@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +15,11 @@
         <font size=5 face="Segoe UI">タスク管理システム</font>
         <br>
         <h2>ログイン</h2>
+        <%if(request.getAttribute("ERROR") != null){%>
+        <font color="red">
+        	<%= (String)request.getAttribute("ERROR") %>
+        </font>
+        <%} %>
         <div class = col-4>
             <div class="form-floating mb-3">
                 <input type="text" name="user_id" class="form-control" id="floatingInput" placeholder="User ID">

@@ -74,7 +74,7 @@ public class TaskDAO {
 			stmt.setInt(1, 0);
 			stmt.setString(2, task.getTaskName());
 			stmt.setInt(3, task.getCategoryId());
-			stmt.setDate(4, java.sql.Date.valueOf(task.getDeadLine()));
+			stmt.setString(4, task.getDeadLine());
 			stmt.setString(5, String.valueOf(task.getUserId()));
 			stmt.setString(6, task.getStatusId());
 			stmt.setString(7, task.getMemo());
@@ -102,7 +102,7 @@ public class TaskDAO {
 			stmt.setInt(1, task.getTaskId());
 			stmt.setString(2, task.getTaskName());
 			stmt.setInt(3, task.getCategoryId());
-			stmt.setDate(4, java.sql.Date.valueOf(task.getDeadLine()));
+			stmt.setString(4, task.getDeadLine());
 			stmt.setString(5, task.getUserId());
 			stmt.setString(6, task.getStatusId());
 			stmt.setString(7, task.getMemo());

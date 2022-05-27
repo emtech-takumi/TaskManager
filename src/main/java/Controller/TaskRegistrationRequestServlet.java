@@ -61,24 +61,26 @@ public class TaskRegistrationRequestServlet extends HttpServlet {
 		
 		TaskDAO dao = new TaskDAO();		
 		String url = "";
-		try {
-			int processingNumder = dao.insert(task);
-			
-			if(processingNumder == 0) {
-				
-				// 登録失敗画面
-				url = "registerror.html";
-				
-			}else {
+
+			try {
+				dao.insert(task);
 				
 				// 登録完了画面
 				url = "task-regist-complete.html";
+				
+			} catch (ClassNotFoundException | SQLException e) {
+
+				// 登録失敗画面
+				url = "registerror.jsp";
+				
+				String errorMessage = e.getMessage();
+				if(taskName.isEmpty()) {
+					// タスク名が未記入
+					errorMessage = 	"タスク名が記入されておりません。";
+				}
+				
+				request.setAttribute("errorMessage", errorMessage);
 			}
-			
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		}
 		
 		// リクエスト転送
 		RequestDispatcher rd = request.getRequestDispatcher(url);

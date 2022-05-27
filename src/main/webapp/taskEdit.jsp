@@ -108,7 +108,7 @@
 			</textarea></td>
 				</tr>
 			</table>
-			<input type="submit" value="更新" style="text-align: right;">
+			<button type="submit" class="btn btn-outline-secondary">更新</button>
 		</form>
 	</div>
 </body>

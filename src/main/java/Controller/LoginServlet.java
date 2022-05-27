@@ -50,7 +50,8 @@ public class LoginServlet extends HttpServlet {
 				request.getRequestDispatcher("menu-servlet").forward(request, response);
 			}else {
 				//認証失敗
-				request.getRequestDispatcher("login.html").forward(request, response);
+				request.setAttribute("ERROR", "IDかパスワードが違います。");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO 自動生成された catch ブロック

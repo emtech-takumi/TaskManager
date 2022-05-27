@@ -15,6 +15,7 @@
 		<form action="task-registration-servlet" method="post">
 			<button type="submit" class="btn btn-outline-secondary" name="register">タスク登録</button> <br>
 		</form>
+		<br>
 		<form action="task-list-servlet" method="post">
 			<button type="submit" class="btn btn-outline-secondary"  name="showlist">タスク一覧</button> <br>
 		</form>

@@ -19,16 +19,17 @@
 		<h2>タスク一覧</h2>
 		<form action="redirect-servlet" method="POST">
 		<div class="table-content">
-			<table class="table table-borded table-responsive table-striped " id="table-list">
+			<table class="table table-borded table-responsive table-striped" id="table-list">
 				<thead class="table-dark">
 					<tr>
-						<th>check</th>
+						<th></th>
 						<th>タスク名</th>
 						<th>カテゴリ情報</th>
 						<th>期限</th>
 						<th>担当者情報</th>
 						<th>ステータス情報</th>
 						<th>メモ</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -36,7 +37,7 @@
 					for (TaskBean task : tasks) {
 					%>
 					<tr>
-						<td><input type="checkbox" name="task_id"
+						<td><input class="form-check-input" type="checkbox" name="task_id"
 							value="<%=task.getTaskId()%>"></td>
 						<%="<td>" + task.getTaskName() + "</td>"%>
 						<%="<td>" + task.getCategoryName() + "</td>"%>
@@ -44,8 +45,9 @@
 						<%="<td>" + task.getUserName() + "</td>"%>
 						<%="<td>" + task.getStatus() + "</td>"%>
 						<%="<td>" + task.getMemo() + "</td>"%>
-						<td><input type="submit" value="編集"
-							name="<%=task.getTaskId()%>"></td>
+						<td>
+							<button type="submit" name="<%=task.getTaskId()%>" class="btn btn-outline-secondary">編集</button>
+						</td>
 					</tr>
 					<%
 					}
@@ -53,7 +55,7 @@
 				</tbody>
 			</table>
 		</div>
-			<input type="submit" value="削除" name="delete">
+			<button type="submit" name="delete" class="btn btn-outline-secondary">削除</button>
 		</form>
 		<a href="menu-servlet">メニューに戻る</a>
 	</div>

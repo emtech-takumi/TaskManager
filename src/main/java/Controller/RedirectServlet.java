@@ -49,23 +49,27 @@ public class RedirectServlet extends HttpServlet {
 		
 		if(user_id != null) {
 			if(request.getParameter("delete") != null) {
-				url = "task-delete-servlet";
 				List<TaskBean> list = new ArrayList<TaskBean>();
 				String[] selected = request.getParameterValues("task_id");
 				session.setAttribute("TASK_IDs", selected);
 				int i = 0;
-				for(String id : selected) {
-					for(TaskBean task : tasks) {
-						if(String.valueOf(task.getTaskId()).equals(id)) {
-							list.add(tasks.get(i));
+				if(selected == null || selected.length == 0) {
+					url = "task-list-servlet";
+				}
+				else {
+					for(String id : selected) {
+						for(TaskBean task : tasks) {
+							if(String.valueOf(task.getTaskId()).equals(id)) {
+								list.add(tasks.get(i));
+							}
 						}
+						i++;
 					}
-					i++;
+					url = "task-delete-servlet";
 				}
 				session.setAttribute("SELECTED_TASKS", list);
 			}
 			else {
-				url = "task-edit-servlet";
 				int i = 0;
 				for(TaskBean task : tasks) {
 					if(request.getParameter(String.valueOf(task.getTaskId())) != null) {
@@ -74,6 +78,7 @@ public class RedirectServlet extends HttpServlet {
 					}
 					i++;
 				}
+				url = "task-edit-servlet";
 			}
 		}else {
 			
