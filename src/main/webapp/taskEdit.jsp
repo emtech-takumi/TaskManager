@@ -20,12 +20,12 @@
 	List<UserBean> userList = (List<UserBean>)request.getAttribute("USER_LIST");	
 %>
 	<h2>タスク編集</h2>
-	<form action="task-registration-request" method="post">
+	<form action="task-edit-request-servlet" method="post">
 		<table>
 			<tr><th>タスク名</th><td><input type="text" name="task_name" maxlength="50"
 			value="<jsp:getProperty property="taskName" name="TASK"/>"></td></tr>
 			<tr><th>カテゴリ</th>
-			<td><select name="TASK_CATEGORY" >
+			<td><select name="task_category" >
 			<%
 			int categoryId = TASK.getCategoryId();
 			for(CategoryBean category : categoryList){
@@ -42,10 +42,10 @@
 			%>
 			</select></td></tr>
 			<tr><th>期限</th>
-			<td><input type="date" name="TASK_LIMIT" 
+			<td><input type="date" name="task_limit" 
 			value="<jsp:getProperty property="deadLine" name="TASK"/>"></td></tr>
 			<tr><th>担当者</th>
-			<td><select name="TASK_USER">
+			<td><select name="task_user">
 			<%
 			String userId = TASK.getUserId();
 			for(UserBean user : userList){
@@ -62,7 +62,7 @@
 			%>
 			</select></td></tr>
 			<tr><th>ステータス</th><td>
-			<select name="TASK_STATUS">
+			<select name="task_status">
 			<%
 			String statusCode = TASK.getStatusId();
 			for(StatusBean status : statusList){
@@ -80,7 +80,7 @@
 			</select>
 			</td></tr>
 			<tr><th>メモ</th><td>
-			<textarea name="TASK_MEMO" rows="3" cols="50" maxlength="100"><jsp:getProperty property="memo" name="TASK"/>
+			<textarea name="task_memo" rows="3" cols="50" maxlength="100"><jsp:getProperty property="memo" name="TASK"/>
 			</textarea></td></tr>
 		</table>
 		<input type="submit" value="更新" style="text-align: right;">
