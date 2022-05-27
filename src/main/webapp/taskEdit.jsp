@@ -17,7 +17,7 @@
 	List<StatusBean> statusList = (List<StatusBean>)request.getAttribute("STATUS_LIST");
 	List<UserBean> userList = (List<UserBean>)request.getAttribute("USER_LIST");	
 %>
-	<h2>タスク登録</h2>
+	<h2>タスク編集</h2>
 	<form action="task-registration-request" method="post">
 		<table>
 			<tr><th>タスク名</th>

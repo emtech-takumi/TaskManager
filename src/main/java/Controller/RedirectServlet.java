@@ -75,12 +75,10 @@ public class RedirectServlet extends HttpServlet {
 					i++;
 				}
 			}
-			
 		}else {
 			
 			// ログイン画面
 			url = "login.html";
-			
 		}
 		
 		// リクエスト転送
