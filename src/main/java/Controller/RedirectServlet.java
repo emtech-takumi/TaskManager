@@ -70,7 +70,7 @@ public class RedirectServlet extends HttpServlet {
 				for(TaskBean task : tasks) {
 					if(request.getParameter(String.valueOf(task.getTaskId())) != null) {
 						session.setAttribute("TASK", tasks.get(i));
-						session.setAttribute("TASK_ID", i);
+						session.setAttribute("TASK_ID", (Integer)task.getTaskId());
 					}
 					i++;
 				}

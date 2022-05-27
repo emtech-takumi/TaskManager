@@ -47,18 +47,13 @@ public class TaskEditRequestServlet extends HttpServlet {
 		
 		if(user_id != null) {
 			TaskBean bean = new TaskBean();
-			bean.setTaskId(0);
+			bean.setTaskId((Integer)session.getAttribute("TASK_ID"));
 			bean.setTaskName(request.getParameter("task_name"));
-			bean.setCategoryId(0);
-			bean.setCategoryName(request.getParameter("category_name"));
-			bean.setDeadLine(request.getParameter("limit_date"));
-			bean.setUserId((Integer.parseInt(request.getParameter("user_id"))));
-			bean.setUserName(request.getParameter("user_name"));
-			bean.setStatusId(request.getParameter("status_code"));
-			bean.setStatus(request.getParameter("status_name"));
-			bean.setMemo(request.getParameter("memo"));
-			bean.setRegisterDate(request.getParameter("create_datetime"));
-			bean.setUpdateDate(request.getParameter("update_datetime"));
+			bean.setCategoryId(Integer.parseInt(request.getParameter("task_category")));
+			bean.setDeadLine(request.getParameter("task_limit"));
+			bean.setUserId((Integer.parseInt(request.getParameter("task_user"))));
+			bean.setStatusId(request.getParameter("task_status"));
+			bean.setMemo(request.getParameter("task_memo"));
 			
 			TaskDAO dao = new TaskDAO();
 			int result = 0;

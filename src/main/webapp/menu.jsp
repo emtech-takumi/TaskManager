@@ -8,6 +8,7 @@ pageEncoding="UTF-8"%>
 <title>メニュー</title>
 </head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
 	<h2>メニュー</h2>
 	<form action="task-registration-servlet" method="post">
 	<input type="submit" value="タスク登録" name="register">

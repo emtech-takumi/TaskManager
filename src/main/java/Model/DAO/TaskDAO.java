@@ -80,7 +80,6 @@ public class TaskDAO {
 			stmt.setString(7, task.getMemo());
 			stmt.setDate(8, java.sql.Date.valueOf(java.time.LocalDate.now()));
 			stmt.setDate(9, java.sql.Date.valueOf(java.time.LocalDate.now()));
-			System.out.println(stmt);
 			return stmt.executeUpdate();
 		}
 	}
@@ -97,10 +96,10 @@ public class TaskDAO {
 						+ " status_code = ?,"
 						+ " memo = ?,"
 						+ " create_datetime = ?,"
-						+ " update_datetime = ?,"
-						+ "WHERE task_id = ?");
+						+ " update_datetime = ?"
+						+ " WHERE task_id = ?");
 		){
-			stmt.setInt(1, 0);
+			stmt.setInt(1, task.getTaskId());
 			stmt.setString(2, task.getTaskName());
 			stmt.setInt(3, task.getCategoryId());
 			stmt.setDate(4, java.sql.Date.valueOf(task.getDeadLine()));
@@ -109,8 +108,7 @@ public class TaskDAO {
 			stmt.setString(7, task.getMemo());
 			stmt.setDate(8, java.sql.Date.valueOf(java.time.LocalDate.now()));
 			stmt.setDate(9, java.sql.Date.valueOf(java.time.LocalDate.now()));
-			stmt.setInt(10, 0);
-			
+			stmt.setInt(10, task.getTaskId());
 			return stmt.executeUpdate();
 		}
 	}

@@ -17,6 +17,7 @@
 	List<StatusBean> statusList = (List<StatusBean>)request.getAttribute("STATUS_LIST");
 	List<UserBean> userList = (List<UserBean>)request.getAttribute("USER_LIST");	
 %>
+	<jsp:include page="header.jsp"></jsp:include>
 	<h2>タスク登録</h2>
 	<form action="task-registration-request-servlet" method="post">
 		<table>

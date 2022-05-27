@@ -10,7 +10,7 @@
 	<%
 	List<TaskBean> taskList = (List<TaskBean>) session.getAttribute("SELECTED_TASKS");
 	%>
-
+	<jsp:include page="header.jsp"></jsp:include>
 	<h2>削除確認画面</h2>
 	以下の情報を削除してもよろしいですか？
 	<%for(TaskBean task : taskList){%>
