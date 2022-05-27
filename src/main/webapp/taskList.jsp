@@ -41,7 +41,7 @@
 							value="<%=task.getTaskId()%>"></td>
 						<%="<td>" + task.getTaskName() + "</td>"%>
 						<%="<td>" + task.getCategoryName() + "</td>"%>
-						<%="<td>" + task.getDeadLine() + "</td>"%>
+						<%="<td>" + (task.getDeadLine()==null ? "" : task.getDeadLine()) + "</td>"%>
 						<%="<td>" + task.getUserName() + "</td>"%>
 						<%="<td>" + task.getStatus() + "</td>"%>
 						<%="<td>" + task.getMemo() + "</td>"%>
