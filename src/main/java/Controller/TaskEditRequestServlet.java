@@ -51,7 +51,7 @@ public class TaskEditRequestServlet extends HttpServlet {
 			bean.setTaskName(request.getParameter("task_name"));
 			bean.setCategoryId(Integer.parseInt(request.getParameter("task_category")));
 			bean.setDeadLine(request.getParameter("task_limit"));
-			bean.setUserId((Integer.parseInt(request.getParameter("task_user"))));
+			bean.setUserId(request.getParameter("task_user"));
 			bean.setStatusId(request.getParameter("task_status"));
 			bean.setMemo(request.getParameter("task_memo"));
 			

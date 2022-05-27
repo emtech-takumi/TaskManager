@@ -18,9 +18,5 @@ pageEncoding="UTF-8"%>
 	<input type="submit" value="タスク一覧" name="showlist">
 	<br>
 	</form>
-	<form action="logout-servlet" method="post">
-	<input type="submit" value="ログアウト" name="post">
-	</form>
-	
 </body>
 </html>

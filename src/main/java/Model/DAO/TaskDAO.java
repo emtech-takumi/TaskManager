@@ -43,7 +43,7 @@ public class TaskDAO {
 				task.setCategoryId(res.getInt("category_id"));
 				task.setCategoryName(res.getString("category_name"));
 				task.setDeadLine(res.getString("limit_date"));
-				task.setUserId(res.getInt("user_id"));
+				task.setUserId(res.getString("user_id"));
 				task.setUserName(res.getString("user_name"));
 				task.setStatusId(res.getString("status_code"));
 				task.setStatus(res.getString("status_name"));
@@ -103,7 +103,7 @@ public class TaskDAO {
 			stmt.setString(2, task.getTaskName());
 			stmt.setInt(3, task.getCategoryId());
 			stmt.setDate(4, java.sql.Date.valueOf(task.getDeadLine()));
-			stmt.setInt(5, task.getUserId());
+			stmt.setString(5, task.getUserId());
 			stmt.setString(6, task.getStatusId());
 			stmt.setString(7, task.getMemo());
 			stmt.setDate(8, java.sql.Date.valueOf(java.time.LocalDate.now()));

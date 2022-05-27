@@ -8,7 +8,7 @@ public class TaskBean implements Serializable {
 	private int categoryId;
 	private String categoryName;
 	private String deadLine;
-	private int userId;
+	private String userId;
 	private String userName;
 	private String statusId;
 	private String status;
@@ -45,10 +45,10 @@ public class TaskBean implements Serializable {
 	public void setDeadLine(String deadLine) {
 		this.deadLine = deadLine;
 	}
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public String getUserName() {

@@ -46,7 +46,7 @@ public class TaskRegistrationRequestServlet extends HttpServlet {
 		String taskName = request.getParameter("task_name");
 		int taskCategoryId = Integer.parseInt(request.getParameter("task_category"));
 		String taskLimit = request.getParameter("task_limit");
-		int taskUserId = Integer.parseInt(request.getParameter("task_user"));
+		String taskUserId = request.getParameter("task_user");
 		String taskStatusCode = request.getParameter("task_status");
 		String taskMemo = request.getParameter("task_memo");
 		
