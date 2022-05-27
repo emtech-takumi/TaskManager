@@ -54,7 +54,7 @@ public class TaskEditRequestServlet extends HttpServlet {
 			bean.setDeadLine(request.getParameter("limit_date"));
 			bean.setUserId((Integer.parseInt(request.getParameter("user_id"))));
 			bean.setUserName(request.getParameter("user_name"));
-			bean.setStatusId(Integer.parseInt(request.getParameter("status_code")));
+			bean.setStatusId(request.getParameter("status_code"));
 			bean.setStatus(request.getParameter("status_name"));
 			bean.setMemo(request.getParameter("memo"));
 			bean.setRegisterDate(request.getParameter("create_datetime"));
@@ -84,8 +84,7 @@ public class TaskEditRequestServlet extends HttpServlet {
 		}
 		
 		// リクエスト転送
-		request.getRequestDispatcher(url).forward(request, response);
-		
+		request.getRequestDispatcher(url).forward(request, response);	
 	}
 
 }

@@ -45,7 +45,7 @@ public class TaskDAO {
 				task.setDeadLine(res.getString("limit_date"));
 				task.setUserId(res.getInt("user_id"));
 				task.setUserName(res.getString("user_name"));
-				task.setStatusId(res.getInt("status_code"));
+				task.setStatusId(res.getString("status_code"));
 				task.setStatus(res.getString("status_name"));
 				task.setMemo(res.getString("memo"));
 				task.setRegisterDate(res.getString("create_datetime"));
@@ -59,7 +59,7 @@ public class TaskDAO {
 		try(Connection con =ConnectionManager.getConnection();
 				PreparedStatement stmt =con.prepareStatement(""
 						+ "DELETE FROM t_task"
-						+ "WHERE id = ?");
+						+ " WHERE id = ?");
 		){
 			stmt.setInt(1, taskId);
 			return stmt.executeUpdate();
@@ -69,18 +69,18 @@ public class TaskDAO {
 		try(Connection con =ConnectionManager.getConnection();
 				PreparedStatement stmt = con.prepareStatement(""
 						+ "INSERT INTO t_task"
-						+ "VALUES (?,?,?,?,?,?,?,?,?)");
+						+ " VALUES (?,?,?,?,?,?,?,?,?)");
 		){
 			stmt.setInt(1, 0);
 			stmt.setString(2, task.getTaskName());
 			stmt.setInt(3, task.getCategoryId());
-			stmt.setString(4, task.getDeadLine());
-			stmt.setInt(5, task.getUserId());
-			stmt.setInt(6, task.getStatusId());
+			stmt.setDate(4, java.sql.Date.valueOf(task.getDeadLine()));
+			stmt.setString(5, String.valueOf(task.getUserId()));
+			stmt.setString(6, task.getStatusId());
 			stmt.setString(7, task.getMemo());
-			stmt.setString(8, "now()");
-			stmt.setString(9, "now()");
-			
+			stmt.setDate(8, java.sql.Date.valueOf(java.time.LocalDate.now()));
+			stmt.setDate(9, java.sql.Date.valueOf(java.time.LocalDate.now()));
+			System.out.println(stmt);
 			return stmt.executeUpdate();
 		}
 	}
@@ -102,12 +102,12 @@ public class TaskDAO {
 			stmt.setInt(1, 0);
 			stmt.setString(2, task.getTaskName());
 			stmt.setInt(3, task.getCategoryId());
-			stmt.setString(4, task.getDeadLine());
+			stmt.setDate(4, java.sql.Date.valueOf(task.getDeadLine()));
 			stmt.setInt(5, task.getUserId());
-			stmt.setInt(6, task.getStatusId());
+			stmt.setString(6, task.getStatusId());
 			stmt.setString(7, task.getMemo());
-			stmt.setString(8, "now()");
-			stmt.setString(9, "now()");
+			stmt.setDate(8, java.sql.Date.valueOf(java.time.LocalDate.now()));
+			stmt.setDate(9, java.sql.Date.valueOf(java.time.LocalDate.now()));
 			stmt.setInt(10, 0);
 			
 			return stmt.executeUpdate();

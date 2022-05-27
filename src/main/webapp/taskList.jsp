@@ -11,10 +11,11 @@
 List<TaskBean> tasks = (List) session.getAttribute("TASK_LIST");
 %> 
 <h2>タスク一覧</h2>
-<form>
-	<table>
+<form action="redirect-servlet" method="POST">
+	<table border="1">
 	<thead>
 		<tr>
+			<th>check</th>
 			<th>タスク名</th>
 			<th>カテゴリ情報</th>
 			<th>期限</th>
@@ -24,8 +25,14 @@ List<TaskBean> tasks = (List) session.getAttribute("TASK_LIST");
 		</tr>
 	</thead>
 	<tbody>
-	<%for(TaskBean task : tasks){%>
+	<%
+	int i = 0;
+	for(TaskBean task : tasks){
+	%>
 		<tr>
+		 	<td>
+		 		<input type="checkbox" name="task_id" value="<%=i%>">
+		 	</td>
 		 	<%="<td>"+task.getTaskName()+"</td>" %>
 		 	<%="<td>"+task.getCategoryName()+"</td>" %>
 		 	<%="<td>"+task.getDeadLine()+"</td>" %>
@@ -33,13 +40,14 @@ List<TaskBean> tasks = (List) session.getAttribute("TASK_LIST");
 		 	<%="<td>"+task.getStatus()+"</td>" %>
 		 	<%="<td>"+task.getMemo()+"</td>" %>
 		 	<td>
-		 		<input type="button" value="編集" name="edit">
-		 		<input type="button" value="削除" name="delete">
+		 		<input type="submit" value="編集" name="<%=i%>">
 		 	</td>
+		 	<%i++;%>
 		</tr>
 	<%} %>
 	</tbody>
 </table>
+<input type="button" value="削除" name="delete">
 	
 </form>
 <a href="menu-servlet">メニューに戻る</a>

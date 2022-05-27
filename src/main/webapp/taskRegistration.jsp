@@ -18,16 +18,16 @@
 	List<UserBean> userList = (List<UserBean>)request.getAttribute("USER_LIST");	
 %>
 	<h2>タスク登録</h2>
-	<form action="task-registration-request" method="post">
+	<form action="task-registration-request-servlet" method="post">
 		<table>
 			<tr><th>タスク名</th>
 				<td>
-					<input type="text">
+					<input type="text" name="task_name">
 				</td>
 			</tr>
 			<tr><th>カテゴリ</th>
 				<td>
-					<select>
+					<select name="task_category">
 						<%for(CategoryBean category : categoryList){%>
 						<option value="<%=category.getCategoryId()%>"><%=category.getCategoryName()%></option>
 						<%}%>
@@ -35,11 +35,11 @@
 				</td>
 			</tr>
 			<tr><th>期限</th>
-				<td><input type="date"></td>
+				<td><input type="date" name="task_limit"></td>
 			</tr>
 			<tr><th>担当者</th>
 				<td>
-					<select>
+					<select name="task_user">
 						<%for(UserBean user : userList){%>
 						<option value="<%=user.getUserId()%>"><%=user.getUserName()%></option>
 						<%}%>
@@ -48,7 +48,7 @@
 			</tr>
 			<tr><th>ステータス</th>
 				<td>
-					<select>
+					<select name="task_status">
 						<%for(StatusBean status : statusList){%>
 						<option value="<%=status.getStatusCode()%>"><%=status.getStatusName()%></option>
 						<%}%>
@@ -57,7 +57,7 @@
 			</tr>
 			<tr><th>メモ</th>
 				<td>
-					<textarea rows="3" cols="50"></textarea>
+					<textarea name="task_memo" rows="3" cols="50"></textarea>
 				</td>
 			</tr>
 		</table>

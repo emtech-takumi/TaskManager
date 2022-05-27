@@ -10,7 +10,7 @@ public class TaskBean implements Serializable {
 	private String deadLine;
 	private int userId;
 	private String userName;
-	private int statusId;
+	private String statusId;
 	private String status;
 	private String memo;
 	private String registerDate;
@@ -57,10 +57,10 @@ public class TaskBean implements Serializable {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public int getStatusId() {
+	public String getStatusId() {
 		return statusId;
 	}
-	public void setStatusId(int statusId) {
+	public void setStatusId(String statusId) {
 		this.statusId = statusId;
 	}
 	public String getStatus() {
