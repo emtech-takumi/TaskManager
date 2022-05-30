@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>タスク一覧表示画面</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="tableStyle.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="./bootstable.min.js"></script>
@@ -16,10 +17,10 @@
 	%>
 	<div class="container">
 		<jsp:include page="header.jsp"></jsp:include>
-		<h2>タスク一覧</h2>
+		<h2 style="padding: 1rem 2rem;border-left: 5px solid #000;nd: #F4F4F4;">タスク一覧</h2>
 		<form action="redirect-servlet" method="POST">
-		<div class="table-content">
-			<table class="table table-borded table-responsive table-striped" id="table-list">
+		<div class="table-content sticky_table_wrapper">
+			<table class="table table-borded table-responsive table-striped sticky_table" id="table-list">
 				<thead class="table-dark">
 					<tr>
 						<th></th>
@@ -55,9 +56,9 @@
 				</tbody>
 			</table>
 		</div>
-			<button type="submit" name="delete" class="btn btn-outline-secondary">削除</button>
+		<br>
+		<button type="submit" name="delete" class="btn btn-secondary">削除</button>
 		</form>
-		<a href="menu-servlet">メニューに戻る</a>
 	</div>
 </body>
 </html>

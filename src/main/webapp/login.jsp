@@ -30,7 +30,7 @@
                 <label for="floatingPassword">Password</label>
             </div>
             <br>
-            <button type="submit" class="btn btn-outline-secondary">ログイン</button>
+            <button type="submit" class="btn btn-secondary">ログイン</button>
         	</div>
         </div>
 	</form>

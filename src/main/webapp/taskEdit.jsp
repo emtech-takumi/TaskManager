@@ -30,7 +30,7 @@
 	%>
 	<div class="container">
 		<jsp:include page="header.jsp"></jsp:include>
-		<h2>タスク編集</h2>
+		<h2 style="padding: 1rem 2rem;border-left: 5px solid #000;nd: #F4F4F4;">タスク編集</h2>
 		<form action="task-edit-request-servlet" method="post">
 			<table>
 				<tr>
@@ -108,7 +108,7 @@
 			</textarea></td>
 				</tr>
 			</table>
-			<button type="submit" class="btn btn-outline-secondary">更新</button>
+			<button type="submit" class="btn btn-secondary">更新</button>
 		</form>
 	</div>
 </body>

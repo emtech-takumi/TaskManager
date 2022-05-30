@@ -55,7 +55,7 @@ public class RedirectServlet extends HttpServlet {
 				List<TaskBean> list = new ArrayList<TaskBean>();
 				String[] selected = request.getParameterValues("task_id");
 				session.setAttribute("TASK_IDs", selected);
-				int i = 0;
+				
 				if(selected == null || selected.length == 0) {
 					url = "task-list-servlet";
 				}
@@ -63,10 +63,9 @@ public class RedirectServlet extends HttpServlet {
 					for(String id : selected) {
 						for(TaskBean task : tasks) {
 							if(String.valueOf(task.getTaskId()).equals(id)) {
-								list.add(tasks.get(i));
+								list.add(task);
 							}
 						}
-						i++;
 					}
 					url = "task-delete-servlet";
 				}

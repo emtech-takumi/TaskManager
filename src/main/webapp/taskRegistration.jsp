@@ -28,7 +28,7 @@
 %>
 <div class="container">
 	<jsp:include page="header.jsp"></jsp:include>
-	<h2>タスク登録</h2>
+	<h2 style="padding: 1rem 2rem;border-left: 5px solid #000;nd: #F4F4F4;">タスク登録</h2>
 	<form action="task-registration-request-servlet" method="post">
 		<table>
 			<tr><th>タスク名</th>
@@ -72,7 +72,7 @@
 				</td>
 			</tr>
 		</table>
-		<button type="submit" class="btn btn-outline-secondary">登録</button>
+		<button type="submit" class="btn btn-secondary">登録</button>
 	</form>
 </div>
 </body>

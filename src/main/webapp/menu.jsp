@@ -11,13 +11,13 @@
 <body>
 	<div class="container">
 		<jsp:include page="header.jsp"></jsp:include>
-		<h2>メニュー</h2>
+		<h2 style="padding: 1rem 2rem;border-left: 5px solid #000;nd: #F4F4F4;">メニュー</h2>
 		<form action="task-registration-servlet" method="post">
-			<button type="submit" class="btn btn-outline-secondary" name="register">タスク登録</button> <br>
+			<button type="submit" class="btn btn-secondary" name="register">タスク登録</button> <br>
 		</form>
 		<br>
 		<form action="task-list-servlet" method="post">
-			<button type="submit" class="btn btn-outline-secondary"  name="showlist">タスク一覧</button> <br>
+			<button type="submit" class="btn btn-secondary"  name="showlist">タスク一覧</button> <br>
 		</form>
 	</div>
 </body>
