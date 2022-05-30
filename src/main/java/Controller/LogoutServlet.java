@@ -41,20 +41,18 @@ public class LogoutServlet extends HttpServlet {
 		String url = "";
 		
 		if(user_id != null) {
-			// リクエスト転送
-			request.getRequestDispatcher(url).forward(request, response);
 			//セッションを削除
 			request.getSession().invalidate();
 			
 			//ログアウト画面へ転送
-			request.getRequestDispatcher("logout.html").forward(request, response);
-			
+			url = "logout.html";
 		}else {
 			
 			// ログイン画面
 			url = "login.jsp";
 			
 		}
+		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 }
