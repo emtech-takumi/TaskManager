@@ -9,8 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Model.entity.TaskBean;
-
+/**
+ * タスク情報のDAO
+ * @author emtech-user
+ *
+ */
 public class TaskDAO {
+	/**
+	 * すべてのタスクの情報を取得
+	 * @return 登録されたすべてのタスク情報が格納されたTaskBeanのリスト
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public List<TaskBean> selectAll() throws ClassNotFoundException, SQLException{
 		List<TaskBean> list = new ArrayList<>();
 		try(Connection con =ConnectionManager.getConnection();
@@ -55,6 +65,13 @@ public class TaskDAO {
 		}
 		return list;
 	}
+	/**
+	 * タスクを削除する
+	 * @param taskId 削除したいタスクのタスクID
+	 * @return 削除した件数 (1->成功 0->失敗)
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public int delete(int taskId) throws ClassNotFoundException, SQLException{
 		try(Connection con =ConnectionManager.getConnection();
 				PreparedStatement stmt =con.prepareStatement(""
@@ -65,6 +82,13 @@ public class TaskDAO {
 			return stmt.executeUpdate();
 		}
 	}
+	/**
+	 * タスクを登録する
+	 * @param task 登録するTaskBean
+	 * @return 登録した件数 (1->成功 0->失敗)
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public int insert(TaskBean task) throws ClassNotFoundException, SQLException{
 		try(Connection con =ConnectionManager.getConnection();
 				PreparedStatement stmt = con.prepareStatement(""
@@ -87,6 +111,14 @@ public class TaskDAO {
 			return stmt.executeUpdate();
 		}
 	}
+	/**
+	 * タスクを更新する
+	 * @param taskId 更新対象のタスクのタスクID
+	 * @param task 更新後のタスクの内容
+	 * @return 更新した件数 (1->成功 0->失敗)
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public int update(int taskId, TaskBean task) throws ClassNotFoundException, SQLException{
 		try(Connection con =ConnectionManager.getConnection();
 				PreparedStatement stmt =con.prepareStatement(""
@@ -99,7 +131,6 @@ public class TaskDAO {
 						+ " user_id = ?,"
 						+ " status_code = ?,"
 						+ " memo = ?,"
-						+ " create_datetime = ?,"
 						+ " update_datetime = ?"
 						+ " WHERE task_id = ?");
 		){
@@ -111,8 +142,7 @@ public class TaskDAO {
 			stmt.setString(6, task.getStatusId());
 			stmt.setString(7, task.getMemo());
 			stmt.setDate(8, java.sql.Date.valueOf(java.time.LocalDate.now()));
-			stmt.setDate(9, java.sql.Date.valueOf(java.time.LocalDate.now()));
-			stmt.setInt(10, task.getTaskId());
+			stmt.setInt(9, task.getTaskId());
 			return stmt.executeUpdate();
 		}
 	}

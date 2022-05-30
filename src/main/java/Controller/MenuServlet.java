@@ -41,17 +41,12 @@ public class MenuServlet extends HttpServlet {
 		String url = "";
 		
 		if(user_id != null) {
-			
 			// メニュー画面
 			url = "menu.jsp";
-			
 		}else {
-			
 			// ログイン画面
-			url = "login.html";
-			
+			url = "login.jsp";
 		}
-		
 		// リクエスト転送
 		request.getRequestDispatcher(url).forward(request, response);
 	}

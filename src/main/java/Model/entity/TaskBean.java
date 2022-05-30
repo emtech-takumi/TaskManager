@@ -1,19 +1,59 @@
 package Model.entity;
 
 import java.io.Serializable;
-
+/**
+ * タスクを表すクラス
+ * @author emtech-user
+ *
+ */
 public class TaskBean implements Serializable {
+	/**
+	 * タスクID
+	 */
 	private int taskId;
+	/**
+	 * タスク名
+	 */
 	private String taskName;
+	/**
+	 * カテゴリID
+	 */
 	private int categoryId;
+	/**
+	 * カテゴリ名
+	 */
 	private String categoryName;
+	/**
+	 * 期限
+	 */
 	private String deadLine;
+	/**
+	 * ユーザID(担当者ID)
+	 */
 	private String userId;
+	/**
+	 * ユーザ名(担当者名)
+	 */
 	private String userName;
+	/**
+	 * ステータスID
+	 */
 	private String statusId;
+	/**
+	 * ステータス
+	 */
 	private String status;
+	/**
+	 * メモ内容
+	 */
 	private String memo;
+	/**
+	 * 登録日
+	 */
 	private String registerDate;
+	/**
+	 * 更新日
+	 */
 	private String updateDate;
 	public int getTaskId() {
 		return taskId;

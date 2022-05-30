@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Model.DAO.TaskDAO;
-
+/**
+ * 指定したタスクの削除処理を行います。
+ * @author 岩永史哉
+ */
 /**
  * Servlet implementation class TaskDeleteRequestServlet
  */
@@ -41,23 +44,35 @@ public class TaskDeleteRequestServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
-		
-		TaskDAO dao = new TaskDAO();
-		int result = 0;
-		String[] taskIds = (String[])session.getAttribute("TASK_IDs");
-		try {
-			for(String id : taskIds) {
-				result += dao.delete(Integer.parseInt(id));
+		String user_id = (String)session.getAttribute("USER_ID");
+		String url = "";
+		if(user_id != null) {
+			TaskDAO dao = new TaskDAO();
+			int result = 0;
+			String[] taskIds = (String[])session.getAttribute("TASK_IDs");
+			try {
+				for(String id : taskIds) {
+					result += dao.delete(Integer.parseInt(id));
+				}
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
 			}
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+			if(result == taskIds.length) {
+				url = "task-delete-complete.html";
+			}else{
+				url = "deleteerror.html";
+			}
+			
+		}else {
+			// ログイン画面
+			url = "login.jsp";
 		}
-		if(result == taskIds.length) {
-			request.getRequestDispatcher("task-delete-complete.html").forward(request,response);
-		}else{
-			request.getRequestDispatcher("deleteerror.html").forward(request,response);
-		}
+		
+		// リクエスト転送
+		request.getRequestDispatcher(url).forward(request, response);
+		
+		
+		
 	}
 
 }

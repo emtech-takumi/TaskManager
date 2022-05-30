@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Model.entity.TaskBean;
-
+/**
+ * 選択したタスクへの処理を制御します。
+ * @author 村田匠海
+ */
 /**
  * Servlet implementation class RedirectServlet
  */
@@ -83,7 +86,7 @@ public class RedirectServlet extends HttpServlet {
 		}else {
 			
 			// ログイン画面
-			url = "login.html";
+			url = "login.jsp";
 		}
 		
 		// リクエスト転送

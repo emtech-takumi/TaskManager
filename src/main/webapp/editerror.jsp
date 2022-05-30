@@ -9,6 +9,6 @@
 <body>
 	編集に失敗しました<br>
 	<div style="color: red;"><%=request.getAttribute("errorMessage")%><br></div>
-	従業員情報編集画面に<a href="menu-servlet">戻る</a>
+	従業員情報編集画面に<a href="task-edit-servlet">戻る</a>
 </body>
 </html>

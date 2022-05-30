@@ -3,87 +3,104 @@ package Controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Model.DAO.TaskDAO;
 import Model.entity.TaskBean;
-
+/**
+ * タスク登録の処理を行います。
+ * @author 野中美天
+ */
 /**
  * Servlet implementation class TaskRegistrationRequestServlet
  */
 @WebServlet("/task-registration-request-servlet")
 public class TaskRegistrationRequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public TaskRegistrationRequestServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public TaskRegistrationRequestServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		
-		// リクエスト取得
-		String taskName = request.getParameter("task_name");
-		int taskCategoryId = Integer.parseInt(request.getParameter("task_category"));
-		String taskLimit = request.getParameter("task_limit");
-		String taskUserId = request.getParameter("task_user");
-		String taskStatusCode = request.getParameter("task_status");
-		String taskMemo = request.getParameter("task_memo");
-		
-		// TaskBeanオブジェクト生成
-		TaskBean task = new TaskBean();
-		task.setTaskName(taskName);
-		task.setCategoryId(taskCategoryId);
-		task.setDeadLine(taskLimit);
-		task.setUserId(taskUserId);
-		task.setStatusId(taskStatusCode);
-		task.setMemo(taskMemo);
-		
-		TaskDAO dao = new TaskDAO();		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String user_id = (String)session.getAttribute("USER_ID");
 		String url = "";
+		
+		if(user_id == null) {
+			
+			// ログイン画面
+			url = "login.jsp";
+			
+		}else {
+			
+			request.setCharacterEncoding("UTF-8");
 
+			// リクエスト取得
+			String taskName = request.getParameter("task_name");
+			int taskCategoryId = Integer.parseInt(request.getParameter("task_category"));
+			String taskLimit = request.getParameter("task_limit");
+			String taskUserId = request.getParameter("task_user");
+			String taskStatusCode = request.getParameter("task_status");
+			String taskMemo = request.getParameter("task_memo");
+
+			// TaskBeanオブジェクト生成
+			TaskBean task = new TaskBean();
+			task.setTaskName(taskName);
+			task.setCategoryId(taskCategoryId);
+			task.setDeadLine(taskLimit);
+			task.setUserId(taskUserId);
+			task.setStatusId(taskStatusCode);
+			task.setMemo(taskMemo);
+
+			TaskDAO dao = new TaskDAO();
+			
 			try {
-				if(taskName.isEmpty()) {
+				if (taskName.isEmpty()) {
 					throw new SQLException("タスク名が記入されておりません。");
 				}
 				dao.insert(task);
-				
+
 				// 登録完了画面
 				url = "task-regist-complete.html";
-				
+
 			} catch (ClassNotFoundException | SQLException e) {
 
 				// 登録失敗画面
 				url = "registerror.jsp";
-				
+
 				String errorMessage = e.getMessage();
-				
+
 				request.setAttribute("errorMessage", errorMessage);
 			}
-		
+
+		}
 		// リクエスト転送
-		RequestDispatcher rd = request.getRequestDispatcher(url);
-		rd.forward(request, response);
+		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 }

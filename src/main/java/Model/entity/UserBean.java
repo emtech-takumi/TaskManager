@@ -1,9 +1,25 @@
 package Model.entity;
-
+/**
+ * ユーザ情報を表すクラス
+ * @author emtech-user
+ *
+ */
 public class UserBean {
+	/**
+	 * ユーザID
+	 */
 	private String userId;
+	/**
+	 * パスワード
+	 */
 	private String password;
+	/**
+	 * ユーザ名
+	 */
 	private String userName;
+	/**
+	 * 更新日
+	 */
 	private String updateDate;
 	public String getUserId() {
 		return userId;

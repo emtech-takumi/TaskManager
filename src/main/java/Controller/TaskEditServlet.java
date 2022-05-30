@@ -12,7 +12,10 @@ import javax.servlet.http.HttpSession;
 
 import Model.DAO.SelecterDAO;
 import Model.DAO.UserDAO;
-
+/**
+ * タスク編集画面への遷移を行います。
+ * @author 野中美天
+ */
 /**
  * Servlet implementation class EditServlet
  */
@@ -47,7 +50,7 @@ public class TaskEditServlet extends HttpServlet {
 		if(user_id == null) {
 			
 			// ログイン画面
-			url = "login.html";
+			url = "login.jsp";
 			
 		}else {
 			

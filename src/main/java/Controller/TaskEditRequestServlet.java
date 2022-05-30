@@ -12,7 +12,10 @@ import javax.servlet.http.HttpSession;
 
 import Model.DAO.TaskDAO;
 import Model.entity.TaskBean;
-
+/**
+ * タスクの編集処理を行います。
+ * @author 岩永史哉
+ */
 /**
  * Servlet implementation class TaskEditRequestServlet
  */
@@ -79,7 +82,7 @@ public class TaskEditRequestServlet extends HttpServlet {
 		}else {
 			
 			// ログイン画面
-			url = "login.html";
+			url = "login.jsp";
 			
 		}
 		

@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LogoutServlet
@@ -35,11 +36,25 @@ public class LogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//セッションを削除
-		request.getSession().invalidate();
+		HttpSession session = request.getSession();
+		String user_id = (String)session.getAttribute("USER_ID");
+		String url = "";
 		
-		//ログアウト画面へ転送
-		request.getRequestDispatcher("logout.html").forward(request, response);
+		if(user_id != null) {
+			// リクエスト転送
+			request.getRequestDispatcher(url).forward(request, response);
+			//セッションを削除
+			request.getSession().invalidate();
+			
+			//ログアウト画面へ転送
+			request.getRequestDispatcher("logout.html").forward(request, response);
+			
+		}else {
+			
+			// ログイン画面
+			url = "login.jsp";
+			
+		}
 	}
 
 }

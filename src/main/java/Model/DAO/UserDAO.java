@@ -9,8 +9,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Model.entity.UserBean;
-
+/**
+ * ユーザ情報のDAO
+ * @author emtech-user
+ *
+ */
 public class UserDAO {
+	/**
+	 * 指定されたユーザIDの情報を取得
+	 * @param user_id ユーザID
+	 * @return 指定されたユーザIDのユーザ情報が格納されたUserBean
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public UserBean select(String user_id) throws SQLException, ClassNotFoundException{
 		UserBean user = new UserBean();
 		
@@ -29,6 +40,12 @@ public class UserDAO {
 		}
 		return user;
 	}
+	/**
+	 * すべてのユーザ情報を取得
+	 * @return 登録されたすべてのユーザ情報が格納されたUserBeanのリスト
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public List<UserBean> selectAll() throws  SQLException, ClassNotFoundException{
 		List<UserBean> list = new ArrayList<UserBean>();
 		

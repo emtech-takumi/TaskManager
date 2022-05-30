@@ -13,7 +13,10 @@ import javax.servlet.http.HttpSession;
 
 import Model.DAO.TaskDAO;
 import Model.entity.TaskBean;
-
+/**
+ * タスク一覧画面への遷移を行います。
+ * @author 野中美天
+ */
 /**
  * Servlet implementation class TaskListServlet
  */
@@ -60,7 +63,7 @@ public class TaskListServlet extends HttpServlet {
 			
 		}else {
 			// ログイン画面
-			url = "login.html";
+			url = "login.jsp";
 		}
 		
 		// リクエスト転送

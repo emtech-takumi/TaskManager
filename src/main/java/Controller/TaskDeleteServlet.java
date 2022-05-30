@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class DeleteServlet
@@ -35,10 +36,20 @@ public class TaskDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+		HttpSession session = request.getSession();
+		String user_id = (String)session.getAttribute("USER_ID");
+		String url = "";
 		
-		request.getRequestDispatcher("taskDeleteConfirm.jsp").forward(request, response);
+		if(user_id != null) {
+			//タスク削除確認画面
+			url = "taskDeleteConfirm.jsp";
+		}else {
+			// ログイン画面
+			url = "login.jsp";
+		}
+		// リクエスト転送
+		request.getRequestDispatcher(url).forward(request, response);
+		
 	}
 
 }

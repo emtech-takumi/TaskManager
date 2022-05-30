@@ -1,7 +1,17 @@
 package Model.entity;
-
+/**
+ * カテゴリを表すクラス
+ * @author emtech-user
+ *
+ */
 public class CategoryBean {
+	/**
+	 * カテゴリID
+	 */
 	private int categoryId;
+	/**
+	 * カテゴリネーム
+	 */
 	private String categoryName;
 	public int getCategoryId() {
 		return categoryId;

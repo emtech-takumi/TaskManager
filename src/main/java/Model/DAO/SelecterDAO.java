@@ -9,8 +9,18 @@ import java.util.List;
 
 import Model.entity.CategoryBean;
 import Model.entity.StatusBean;
-
+/**
+ * カテゴリ・ステータス一覧のDAO
+ * @author emtech-user
+ *
+ */
 public class SelecterDAO {
+	/**
+	 * すべてのカテゴリの情報を取得
+	 * @return すべてのカテゴリ情報が入ったリスト
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public List<CategoryBean> getAllCategory() throws SQLException, ClassNotFoundException{
 		List<CategoryBean> list = new ArrayList<>();
 		String sql ="SELECT * FROM m_category";
@@ -28,6 +38,12 @@ public class SelecterDAO {
 		
 		return list;
 	}
+	/**
+	 * すべてのステータスの情報を取得
+	 * @return すべてのステータス情報が入ったリスト
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public List<StatusBean> getAllStatus() throws ClassNotFoundException, SQLException{
 		List<StatusBean> list = new ArrayList<>();
 		String sql ="SELECT * FROM m_status";
