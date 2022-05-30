@@ -63,6 +63,9 @@ public class TaskRegistrationRequestServlet extends HttpServlet {
 		String url = "";
 
 			try {
+				if(taskName.isEmpty()) {
+					throw new SQLException("タスク名が記入されておりません。");
+				}
 				dao.insert(task);
 				
 				// 登録完了画面
@@ -74,10 +77,6 @@ public class TaskRegistrationRequestServlet extends HttpServlet {
 				url = "registerror.jsp";
 				
 				String errorMessage = e.getMessage();
-				if(taskName.isEmpty()) {
-					// タスク名が未記入
-					errorMessage = 	"タスク名が記入されておりません。";
-				}
 				
 				request.setAttribute("errorMessage", errorMessage);
 			}

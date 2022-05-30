@@ -61,14 +61,19 @@ public class TaskEditRequestServlet extends HttpServlet {
 				if(!bean.getTaskName().equals("")) {
 					result = dao.update((Integer)session.getAttribute("TASK_ID"), bean);
 				}
+				else {
+					throw new SQLException("タスク名が記入されておりません。");
+				}
 			} catch (ClassNotFoundException | SQLException e) {
-				// TODO 自動生成された catch ブロック
-				e.printStackTrace();
+				
+				String errorMessage = e.getMessage();
+				request.setAttribute("errorMessage", errorMessage);
+
 			}
 			if(result >= 1) {
 				url = "task-edit-complete.html";
 			}else{
-				url = "editerror.html";
+				url = "editerror.jsp";
 			}
 			
 		}else {
