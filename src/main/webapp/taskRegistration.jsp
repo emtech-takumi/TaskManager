@@ -3,12 +3,13 @@
 <%@page import="Model.entity.UserBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>タスク登録画面</title>
+<link rel="stylesheet" href="style.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -20,60 +21,78 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-<%
+	<%
 	request.setCharacterEncoding("UTF-8");
-	List<CategoryBean> categoryList = (List<CategoryBean>)request.getAttribute("CATEGORY_LIST");
-	List<StatusBean> statusList = (List<StatusBean>)request.getAttribute("STATUS_LIST");
-	List<UserBean> userList = (List<UserBean>)request.getAttribute("USER_LIST");	
-%>
-<div class="container">
-	<jsp:include page="header.jsp"></jsp:include>
-	<h2 style="padding: 1rem 2rem;border-left: 5px solid #000;nd: #F4F4F4;">タスク登録</h2>
-	<form action="task-registration-request-servlet" method="post">
-		<table>
-			<tr><th>タスク名</th>
-				<td>
-					<input type="text" name="task_name">
-				</td>
-			</tr>
-			<tr><th>カテゴリ</th>
-				<td>
-					<select name="task_category">
-						<%for(CategoryBean category : categoryList){%>
-						<option value="<%=category.getCategoryId()%>"><%=category.getCategoryName()%></option>
-						<%}%>
-					</select>
-				</td>
-			</tr>
-			<tr><th>期限</th>
-				<td><input type="date" name="task_limit"></td>
-			</tr>
-			<tr><th>担当者</th>
-				<td>
-					<select name="task_user">
-						<%for(UserBean user : userList){%>
-						<option value="<%=user.getUserId()%>"><%=user.getUserName()%></option>
-						<%}%>
-					</select>
-				</td>
-			</tr>
-			<tr><th>ステータス</th>
-				<td>
-					<select name="task_status">
-						<%for(StatusBean status : statusList){%>
-						<option value="<%=status.getStatusCode()%>"><%=status.getStatusName()%></option>
-						<%}%>
-					</select>
-				</td>
-			</tr>
-			<tr><th>メモ</th>
-				<td>
-					<textarea name="task_memo" rows="3" cols="50"></textarea>
-				</td>
-			</tr>
-		</table>
-		<button type="submit" class="btn btn-secondary">登録</button>
-	</form>
-</div>
+	List<CategoryBean> categoryList = (List<CategoryBean>) request.getAttribute("CATEGORY_LIST");
+	List<StatusBean> statusList = (List<StatusBean>) request.getAttribute("STATUS_LIST");
+	List<UserBean> userList = (List<UserBean>) request.getAttribute("USER_LIST");
+	%>
+	<div id="particles-js"></div>
+	<!-- ここがcanvasになる -->
+
+	<!-- particles.js -->
+	<script src="particles.min.js"></script>
+
+	<!-- ご自身のパスに変更 -->
+	<script src="main.js"></script>
+	<div class="container content">
+		<jsp:include page="header.jsp"></jsp:include>
+		<h2
+			style="padding: 1rem 2rem; border-left: 5px solid #000; nd: #F4F4F4;">タスク登録</h2>
+		<form action="task-registration-request-servlet" method="post">
+			<table>
+				<tr>
+					<th>タスク名</th>
+					<td><input type="text" name="task_name"></td>
+				</tr>
+				<tr>
+					<th>カテゴリ</th>
+					<td><select name="task_category">
+							<%
+							for (CategoryBean category : categoryList) {
+							%>
+							<option value="<%=category.getCategoryId()%>"><%=category.getCategoryName()%></option>
+							<%
+							}
+							%>
+					</select></td>
+				</tr>
+				<tr>
+					<th>期限</th>
+					<td><input type="date" name="task_limit"></td>
+				</tr>
+				<tr>
+					<th>担当者</th>
+					<td><select name="task_user">
+							<%
+							for (UserBean user : userList) {
+							%>
+							<option value="<%=user.getUserId()%>"><%=user.getUserName()%></option>
+							<%
+							}
+							%>
+					</select></td>
+				</tr>
+				<tr>
+					<th>ステータス</th>
+					<td><select name="task_status">
+							<%
+							for (StatusBean status : statusList) {
+							%>
+							<option value="<%=status.getStatusCode()%>"><%=status.getStatusName()%></option>
+							<%
+							}
+							%>
+					</select></td>
+				</tr>
+				<tr>
+					<th>メモ</th>
+					<td><textarea name="task_memo" rows="3" cols="50"></textarea>
+					</td>
+				</tr>
+			</table>
+			<button type="submit" class="btn btn-secondary">登録</button>
+		</form>
+	</div>
 </body>
 </html>

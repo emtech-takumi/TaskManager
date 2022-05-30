@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>タスク編集画面</title>
+<link rel="stylesheet" href="./style.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -28,7 +29,16 @@
 	List<StatusBean> statusList = (List<StatusBean>) request.getAttribute("STATUS_LIST");
 	List<UserBean> userList = (List<UserBean>) request.getAttribute("USER_LIST");
 	%>
-	<div class="container">
+	<div id="particles-js">
+	
+	</div> <!-- ここがcanvasになる -->
+
+  	<!-- particles.js -->
+  	<script src="particles.min.js"></script>
+
+  	<!-- ご自身のパスに変更 -->
+  	<script src="main.js"></script>
+	<div class="container content">
 		<jsp:include page="header.jsp"></jsp:include>
 		<h2 style="padding: 1rem 2rem;border-left: 5px solid #000;nd: #F4F4F4;">タスク編集</h2>
 		<form action="task-edit-request-servlet" method="post">
@@ -104,8 +114,7 @@
 					<th>メモ</th>
 					<td><textarea name="task_memo" rows="3" cols="50"
 							maxlength="100"><jsp:getProperty property="memo"
-								name="TASK" />
-			</textarea></td>
+name="TASK" /></textarea></td>
 				</tr>
 			</table>
 			<button type="submit" class="btn btn-secondary">更新</button>
