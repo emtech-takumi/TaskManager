@@ -48,7 +48,7 @@
 			<table>
 				<tr>
 					<th>タスク名</th>
-					<td><input type="text" name="task_name"></td>
+					<td><input type="text" name="task_name"  maxlength="50"></td>
 				</tr>
 				<tr>
 					<th>カテゴリ</th>
@@ -92,7 +92,7 @@
 				</tr>
 				<tr>
 					<th>メモ</th>
-					<td><textarea name="task_memo" rows="3" cols="50"></textarea>
+					<td><textarea name="task_memo" rows="3" cols="50" maxlength="100"></textarea>
 					</td>
 				</tr>
 			</table>

@@ -58,7 +58,6 @@ public class TaskEditRequestServlet extends HttpServlet {
 			bean.setMemo(request.getParameter("task_memo"));
 			
 			TaskDAO dao = new TaskDAO();
-			int result = 0;
 			try {
 				if(bean.getTaskName().equals("")) {
 					throw new SQLException("タスク名が記入されておりません。");
