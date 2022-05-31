@@ -31,17 +31,17 @@
         	<%= (String)request.getAttribute("ERROR") %>
         </font>
         <%} %>
-        <div class = col-6>
-            <div class="form-floating mb-3">
-                <input type="text" name="user_id" class="form-control" id="floatingInput" placeholder="User ID">
-                <label for="floatingInput">User ID</label>
-            </div>
-            <div class="form-floating">
-                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
-            </div>
-            <br>
-            <button type="submit" class="btn btn-secondary">ログイン</button>
+        	<div class = col-6>
+            	<div class="form-floating mb-3">
+	                <input type="text" name="user_id" class="form-control" id="floatingInput" placeholder="User ID">
+	                <label for="floatingInput">User ID</label>
+	            </div>
+	            <div class="form-floating">
+	                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+	                <label for="floatingPassword">Password</label>
+	            </div>
+	           	<br>
+	        	<button type="submit" class="btn btn-secondary">ログイン</button>
         	</div>
         </div>
 	</form>

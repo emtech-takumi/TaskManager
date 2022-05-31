@@ -13,7 +13,17 @@
 	<br>
 	登録に失敗しました。<br>
 	<div style="color: red;"><%=request.getAttribute("errorMessage")%><br></div>
+	<%
+	if(session.getAttribute("USER_ID") == null){
+	%>
+	タスク登録画面に<a href="login.jsp">戻る</a>
+	<%
+	}else{
+	%>
 	タスク登録画面に<a href="#" onclick="history.back(-1);return false;">戻る</a>
+	<%
+	}
+	%>
 </div>
 </body>
 </html>
