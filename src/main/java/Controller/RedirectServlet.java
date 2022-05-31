@@ -56,6 +56,7 @@ public class RedirectServlet extends HttpServlet {
 				session.setAttribute("TASK_IDs", selected);
 				
 				if(selected == null || selected.length == 0) {
+					request.setAttribute("errorMessage", "タスクを１件以上選択してください。");
 					url = "task-list-servlet";
 				}
 				else {

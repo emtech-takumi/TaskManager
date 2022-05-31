@@ -61,6 +61,9 @@
 			</table>
 		</div>
 		<br>
+		<%if(request.getAttribute("errorMessage") != null){ %>
+		<div style="color: red;"><%=request.getAttribute("errorMessage")%></div><br>
+		<%} %>
 		<button type="submit" name="delete" class="btn btn-secondary">削除</button>
 		</form>
 	</div>
