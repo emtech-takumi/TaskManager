@@ -35,8 +35,7 @@ public class TaskEditRequestServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	/**
@@ -61,29 +60,33 @@ public class TaskEditRequestServlet extends HttpServlet {
 			TaskDAO dao = new TaskDAO();
 			int result = 0;
 			try {
-				if(!bean.getTaskName().equals("")) {
-					result = dao.update((Integer)session.getAttribute("TASK_ID"), bean);
+				if(bean.getTaskName().equals("")) {
+					throw new SQLException("タスク名が記入されておりません。");
+				}
+				else if(bean.getTaskName().length() > 50) {
+					throw new SQLException("タスク名に記入できる文字数は50文字までです。");
+				}
+				else if(bean.getMemo().length() > 100) {
+					throw new SQLException("メモに記入できる文字数は100文字までです。");
 				}
 				else {
-					throw new SQLException("タスク名が記入されておりません。");
+					if(dao.update((Integer)session.getAttribute("TASK_ID"), bean) != 1) {
+						url = "editerror.jsp";
+						throw new SQLException("タスクの更新に失敗しました。");
+					}else {
+						url = "task-edit-complete.html";
+					}
 				}
 			} catch (ClassNotFoundException | SQLException e) {
 				
 				String errorMessage = e.getMessage();
 				request.setAttribute("errorMessage", errorMessage);
-
-			}
-			if(result >= 1) {
-				url = "task-edit-complete.html";
-			}else{
-				url = "editerror.jsp";
 			}
 			
 		}else {
 			
 			// ログイン画面
 			url = "login.jsp";
-			
 		}
 		
 		// リクエスト転送

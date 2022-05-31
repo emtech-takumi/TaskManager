@@ -37,8 +37,7 @@ public class TaskRegistrationRequestServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	/**
@@ -80,10 +79,21 @@ public class TaskRegistrationRequestServlet extends HttpServlet {
 			TaskDAO dao = new TaskDAO();
 			
 			try {
-				if (taskName.isEmpty()) {
+				if(task.getTaskName().equals("")) {
 					throw new SQLException("タスク名が記入されておりません。");
 				}
-				dao.insert(task);
+				else if(task.getTaskName().length() > 50) {
+					throw new SQLException("タスク名に記入できる文字数は50文字までです。");
+				}
+				else if(task.getMemo().length() > 100) {
+					throw new SQLException("メモに記入できる文字数は100文字までです。");
+				}
+				else {
+					if(dao.insert(task) != 1) {
+						throw new SQLException("タスクの登録に失敗しました。");
+					};
+				}
+				
 
 				// 登録完了画面
 				url = "task-regist-complete.html";
