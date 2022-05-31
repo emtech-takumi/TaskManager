@@ -91,7 +91,7 @@ public class TaskRegistrationRequestServlet extends HttpServlet {
 				else {
 					if(dao.insert(task) != 1) {
 						throw new SQLException("タスクの登録に失敗しました。");
-					};
+					}
 				}
 				
 

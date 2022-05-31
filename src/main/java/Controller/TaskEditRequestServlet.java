@@ -70,14 +70,13 @@ public class TaskEditRequestServlet extends HttpServlet {
 				}
 				else {
 					if(dao.update((Integer)session.getAttribute("TASK_ID"), bean) != 1) {
-						url = "editerror.jsp";
 						throw new SQLException("タスクの更新に失敗しました。");
 					}else {
 						url = "task-edit-complete.html";
 					}
 				}
 			} catch (ClassNotFoundException | SQLException e) {
-				
+				url = "editerror.jsp";
 				String errorMessage = e.getMessage();
 				request.setAttribute("errorMessage", errorMessage);
 			}

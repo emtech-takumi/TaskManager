@@ -62,14 +62,11 @@
 								if (category.getCategoryId() == categoryId) {
 							%>
 							<option value="<%=category.getCategoryId()%>" selected><%=category.getCategoryName()%></option>
-							<%
-							} else {
-							%>
+							<%} else {%>
 							<option value="<%=category.getCategoryId()%>"><%=category.getCategoryName()%></option>
 							<%
-							}
-							}
-							%>
+								}
+							}%>
 					</select></td>
 				</tr>
 				<tr>
