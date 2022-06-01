@@ -28,7 +28,7 @@
 			</tr>
 			<tr>
 				<td style= "width:200px;background-color:LightGrey;">カテゴリ情報</td>
-				<td><%=task.getCategoryId()%></td>
+				<td><%=task.getCategoryName()%></td>
 			</tr>
 			<tr>
 				<td style= "width:200px;background-color:LightGrey;">期限</td>
